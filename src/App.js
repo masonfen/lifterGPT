@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Helo everyon!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="title-container">
+      <Title /> <Second_Title />
     </div>
+    <div className= "GoalType-container">
+    <Button label= "Hypertrophy" onClick={() => alert('Button clicked!')} />
+    </div>
+    </div>
+  );
+}
+
+//title for the app
+function Title() {
+  return (
+    <h1 className ="title">Lifter</h1>
+  );
+}
+
+function Second_Title() {
+  return (
+    <h1 className = "second_title">GPT</h1>
+  );
+}
+
+//button for hypertrophy or strength
+function Button({ label, onClick }) {
+  return (
+    <button className="custom-button" onClick={onClick}>
+      {label}
+    </button>
   );
 }
 
