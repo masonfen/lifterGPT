@@ -12,12 +12,12 @@
   margin: 0 10px; /* Adjust spacing as needed */
 }
 
-.title {
+.lifter_title {
   font-size: 3em;
   color: rgb(0, 0, 0);
 }
 
-.second_title {
+.gpt_title {
   font-size: 2em;
   color: rgb(36, 197, 36);
 } 
