@@ -21,3 +21,11 @@
   font-size: 2em;
   color: rgb(36, 197, 36);
 } 
+
+
+.custom-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

@@ -25,8 +25,8 @@ function App() {
       <WeightSelection />
     </div>
 
-    <div className= "GO-container">
-      <Button label = "GO" onClick={() => alert('GO clicked!')} />
+    <div className= "Continue-container">
+      <Button label = "See what works for you!" onClick={() => alert('GO clicked!')} />
     </div>
 
     </div>
