@@ -29,3 +29,17 @@
   align-items: center;
   cursor: pointer;
 }
+
+.response-box {
+  border: 2px solid #4caf50; 
+  border-radius: 8px; 
+  padding: 16px; 
+  margin-top: 20px; 
+  background-color: #f9f9f9; 
+  color: #333; 
+  font-size: 16px; 
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto; 
+  word-wrap: break-word; 
+}
