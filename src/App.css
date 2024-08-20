@@ -12,6 +12,40 @@
   margin: 0 10px; /* Adjust spacing as needed */
 }
 
+.Gender-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /*adjust for spacing between containers*/
+}
+
+.GoalType-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.WeightSelection-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.HeightSelection-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.GeneratePrompt-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .lifter_title {
   font-size: 3em;
   color: rgb(0, 0, 0);
@@ -31,15 +65,26 @@
 }
 
 .response-box {
-  border: 2px solid #4caf50; 
+  border: 2px solid #08f710; 
   border-radius: 8px; 
   padding: 16px; 
   margin-top: 20px; 
   background-color: #f9f9f9; 
   color: #333; 
   font-size: 16px; 
-  max-width: 600px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto; 
   word-wrap: break-word; 
+  height: 900px;
 }
+
+.response-box ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.response-box strong {
+  font-weight: bold;
+}
+

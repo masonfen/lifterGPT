@@ -6,6 +6,8 @@ import Button from './components/Button';
 import GPT_Title from './components/GPT_Title';
 import LifterTitle from './components/LifterTitle';
 import WeightSelection from './components/WeightSelection';
+import FeetSelection from './components/FeetSelection';
+import InchSelection from './components/InchSelection';
 import apiKey from './components/apiKey';
 
 // CHATGPT imports
@@ -13,7 +15,7 @@ import { OpenAI } from 'openai';
 
 
 function App() {
-  // State management for GPT-4 interaction
+  //  GPT-4 interaction state management --> prompt and response
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
 
@@ -24,7 +26,8 @@ const [selectedGender, setSelectedGender] = useState(null);
 const [selectedFocus, setSelectedFocus] = useState(null);
 
 const [weight, setWeight] = useState('');
-
+const [feet, setFeet] = useState('');
+const [inch, setInch] = useState('');
 
 
 
@@ -40,8 +43,8 @@ const [weight, setWeight] = useState('');
       const result = await openai.chat.completions.create({
         model: 'gpt-4', //  <------- **SELECT MODEL TYPE FOR CHATGPT HERE**
         messages: [{ role: 'user', content: prompt }],
-        max_tokens: 100, //adjust token amount
-        temperature: 0.2, //(0.1 - 0.5) --> low temperature == safe response, not as creative
+        max_tokens: 500, //adjust token amount
+        temperature: 1, //(0.1 - 0.5) --> low temperature == safe response, not as creative
       });                 //(0.7 - 1.0+)--> high temperature == more creative and less predictable
 
       setResponse(result.choices[0].message.content); // Set the response
@@ -51,7 +54,7 @@ const [weight, setWeight] = useState('');
     }
   };
 
-  //Handles selected Gender type
+  //if button is selected, store it as the *SELECTED* variable
   const handleGenderSelection = (button) => {setSelectedGender(button);
   };
 
@@ -60,8 +63,21 @@ const [weight, setWeight] = useState('');
 
   const handleWeightChange = (value) => setWeight(value);
 
+  const handleFeetChange = (value) => setFeet(value);
+
+  const handleInchChange = (value) => setInch(value);
+
   const handleSubmit = () => {
-    const generatedPrompt = `What kind of workout is best for someone who is ${selectedGender}, who weighs ${weight} pounds, and who wants to focus on ${selectedFocus}?`;
+
+    const generatedPrompt = `What kind of workout is best for someone who is ${selectedGender}, who weighs ${weight} pounds, and who wants to focus on ${selectedFocus}? 
+    Please provide a 5-day workout plan in a structured format with the following details:
+    - Briefly describe what the workout is geared towards and how it is personalized.
+    - Use <strong> tags for bold text.
+    - Use <ul> and <li> tags to create bullet points.
+    - Number the days (Day 1, Day 2, etc.) with <strong> tags.
+    NOTE: make sure that the response fits in the cooresponding 600px response box that it is in`;
+
+
     console.log('Generated prompt:', generatedPrompt); //USE FOR DEBUGGING --> inspect element on page and go to console
     setPrompt(generatedPrompt)
   };
@@ -70,7 +86,7 @@ const [weight, setWeight] = useState('');
   useEffect(() => {
     if (prompt) {
       generateResponse();
-    }
+    } // eslint-disable-next-line
   }, [prompt]);
 
 
@@ -78,7 +94,7 @@ const [weight, setWeight] = useState('');
   // Render the component
   return (
     <div className="App">
-      <div className="title-container">
+      <div className="title-container">         {/*eslint-disable-next-line*/}
         <LifterTitle /> <GPT_Title />
       </div>
 
@@ -102,13 +118,20 @@ const [weight, setWeight] = useState('');
         />
       </div>
 
-      {/* assigning workout type */}
+      {/* assigning weight */}
       <div className="WeightSelection-container">
         <WeightSelection weight={weight} onChange={handleWeightChange} />
       </div>
 
+     {/* assigning height */}
+     <div className="HeightSelection-container">
+        <FeetSelection feet={feet} onChange={handleFeetChange} />
+        <InchSelection inch={inch} onChange={handleInchChange} />
+      </div>
+
+
       {/* generate GPT prompt  */}
-      <div className="Continue-container">
+      <div className="GeneratePrompt-container">
         <Button label="See what works for you!" onClick={handleSubmit} />
       </div>
 
@@ -117,7 +140,7 @@ const [weight, setWeight] = useState('');
 
       <h3>Workout Plan:</h3>
       <div className = "response-box">
-      {response}
+      <div dangerouslySetInnerHTML={{__html: response}} />
 
       </div>
 
