@@ -9,6 +9,7 @@ import WeightSelection from './components/WeightSelection';
 import FeetSelection from './components/FeetSelection';
 import InchSelection from './components/InchSelection';
 import apiKey from './components/apiKey';
+import AddEquipment from './components/AddEquipment';
 
 // CHATGPT imports
 import { OpenAI } from 'openai';
@@ -91,7 +92,6 @@ const [inch, setInch] = useState('');
 
 
 
-  // Render the component
   return (
     <div className="App">
       <div className="title-container">         {/*eslint-disable-next-line*/}
@@ -110,11 +110,17 @@ const [inch, setInch] = useState('');
 
       {/* buttons for assigning goal type */}
       <div className="GoalType-container">
-        <Button label="Hypertrophy" onClick={() => handleFocusSelection('hypertrophy')}
+        <Button label="Build Muscle" onClick={() => handleFocusSelection('hypertrophy')}
           style={{ backgroundColor: selectedFocus === 'hypertrophy' ? 'red' : 'grey' }}
         />
         <Button label="Strength" onClick={() => handleFocusSelection('strength')}
           style={{ backgroundColor: selectedFocus === 'strength' ? 'red' : 'grey' }}
+        />
+        <Button label="Fat Loss" onClick={() => handleFocusSelection('fatLoss')}
+          style={{ backgroundColor: selectedFocus === 'fatLoss' ? 'red' : 'grey' }}
+        />
+        <Button label="Overall health" onClick={() => handleFocusSelection('overallHealth')}
+          style={{ backgroundColor: selectedFocus === 'overallHealth' ? 'red' : 'grey' }}
         />
       </div>
 
@@ -129,6 +135,9 @@ const [inch, setInch] = useState('');
         <InchSelection inch={inch} onChange={handleInchChange} />
       </div>
 
+    <div className = "Equipment-container">
+      <AddEquipment />
+    </div>
 
       {/* generate GPT prompt  */}
       <div className="GeneratePrompt-container">
