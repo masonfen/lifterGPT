@@ -45,7 +45,7 @@ const [selectedEquipment, setEquipment] = useState('')
         model: 'gpt-4', //  <------- **SELECT MODEL TYPE FOR CHATGPT HERE**
         messages: [{ role: 'user', content: prompt }],
         max_tokens: 500, //adjust token amount
-        temperature: 1, //(0.1 - 0.5) --> low temperature == safe response, not as creative
+        temperature: 0.5, //(0.1 - 0.5) --> low temperature == safe response, not as creative
       });                 //(0.7 - 1.0+)--> high temperature == more creative and less predictable
 
       setResponse(result.choices[0].message.content); // Set the response
@@ -78,8 +78,8 @@ const [selectedEquipment, setEquipment] = useState('')
     `Give the best workout program for someone who is a ${selectedGender}, wants to focus their workout program towards ${selectedFocus}.
      They weigh about ${selectedWeight}, and their height is ${feet} feet, and ${inch} inches.
 
-      Make sure the program is geared towards, and specifically utilizes
-    thes pieces of equipment and nothing else: ${selectedEquipment}
+      Make sure the program is geared towards, and specifically utilizes these
+    pieces of equipment and nothing else: ${selectedEquipment}
     
     
     
