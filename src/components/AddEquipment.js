@@ -1,39 +1,45 @@
 import React, { useState } from 'react';
+// import './EquipmentInput.css';
 
-function AddEquipment() {
-    //State management --> setequipment holds array of added attributes
-    //Current equipment --> string that holds value of current input field
+function EquipmentInput() {
     const [equipment, setEquipment] = useState([]);
     const [currentEquipment, setCurrentEquipment] = useState('');
 
-    //Handle Input Change
+    // Handle the change of the current input
     const handleInputChange = (event) => {
         setCurrentEquipment(event.target.value);
     };
 
+    // Handle adding equipment to the list
     const handleAddEquipment = () => {
         if (currentEquipment.trim()) {
             setEquipment([...equipment, currentEquipment.trim()]);
-            setCurrentEquipment('');
-        }    
+            setCurrentEquipment(''); // Clear the input for the next equipment
+        }
     };
+
     return (
-        <div>
+        <div className="equipment-input-container">
+            {equipment.map((item, index) => (
+                <div key={index} className="equipment-item">
+                    {item}
+                </div>
+            ))}
             <input
                 type="text"
                 value={currentEquipment}
                 onChange={handleInputChange}
                 placeholder="Enter equipment"
+                className="equipment-input"
             />
-            <button onClick={handleAddEquipment}>Add Equipment</button>
-            <ul>
-                {equipment.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul>
+            <button onClick={handleAddEquipment} className="add-equipment-button">
+                Add Equipment
+            </button>
         </div>
     );
 }
-    export default AddEquipment
+
+export default EquipmentInput;
+
 
 

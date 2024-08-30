@@ -20,17 +20,17 @@ function App() {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
 
-//    ****State Management**** (manages state of certain conditions)
+//    ****State Management**** --> set new variabls that store their data
 
 const [selectedGender, setSelectedGender] = useState(null);
 
 const [selectedFocus, setSelectedFocus] = useState(null);
 
-const [weight, setWeight] = useState('');
+const [selectedWeight, setWeight] = useState('');
 const [feet, setFeet] = useState('');
 const [inch, setInch] = useState('');
 
-
+const [selectedEquipment, setEquipment] = useState('')
 
   // Initialize OpenAI client using API key
   const openai = new OpenAI({
@@ -68,9 +68,21 @@ const [inch, setInch] = useState('');
 
   const handleInchChange = (value) => setInch(value);
 
+  const handleAddEquipment = (value) => setEquipment(value);
+
   const handleSubmit = () => {
 
-    const generatedPrompt = `What kind of workout is best for someone who is ${selectedGender}, who weighs ${weight} pounds, and who wants to focus on ${selectedFocus}? 
+    const generatedPrompt = 
+    
+    // about the user
+    `Give the best workout program for someone who is a ${selectedGender}, wants to focus their workout program towards ${selectedFocus}.
+     They weigh about ${selectedWeight}, and their height is ${feet} feet, and ${inch} inches.
+
+      Make sure the program is geared towards, and specifically utilizes
+    thes pieces of equipment and nothing else: ${selectedEquipment}
+    
+    
+    
     Please provide a 5-day workout plan in a structured format with the following details:
     - Briefly describe what the workout is geared towards and how it is personalized.
     - Use <strong> tags for bold text.
@@ -126,7 +138,7 @@ const [inch, setInch] = useState('');
 
       {/* assigning weight */}
       <div className="WeightSelection-container">
-        <WeightSelection weight={weight} onChange={handleWeightChange} />
+        <WeightSelection weight={selectedWeight} onChange={handleWeightChange} />
       </div>
 
      {/* assigning height */}
@@ -134,9 +146,10 @@ const [inch, setInch] = useState('');
         <FeetSelection feet={feet} onChange={handleFeetChange} />
         <InchSelection inch={inch} onChange={handleInchChange} />
       </div>
-
+    
+    {/* list for available workout equipment */}
     <div className = "Equipment-container">
-      <AddEquipment />
+      <AddEquipment equipment = {selectedEquipment} onChange = {handleAddEquipment}/>
     </div>
 
       {/* generate GPT prompt  */}
