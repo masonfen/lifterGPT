@@ -1,6 +1,6 @@
 function LifterTitle() {
     return (
-      <h1 className ="lifter_title">Fitness</h1>
+      <h1 className ="lifter_title">Flex</h1>
     );
   }
 

@@ -3,8 +3,8 @@ import './App.css';
 
 // COMPONENTS 
 import Button from './components/Button';
-import GPT_Title from './components/GPT_Title';
-import LifterTitle from './components/LifterTitle';
+import Fit_Title from './components/Fit_Title';
+import FlexTitle from './components/FlexTitle';
 import WeightSelection from './components/WeightSelection';
 import FeetSelection from './components/FeetSelection';
 import InchSelection from './components/InchSelection';
@@ -110,7 +110,7 @@ const [selectedEquipment, setEquipment] = useState('')
       {/* Title */}
       <div className="title-background">  
         <div className = "title-container">    {/*eslint-disable-next-line*/}
-        <LifterTitle /> <GPT_Title />
+        <FlexTitle /> <Fit_Title />
         </div>
       </div>
 
