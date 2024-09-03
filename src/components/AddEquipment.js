@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 // import './EquipmentInput.css';
 
-function EquipmentInput() {
+function EquipmentInput({ onChange }) {  // Accept onChange as a prop
     const [equipment, setEquipment] = useState([]);
     const [currentEquipment, setCurrentEquipment] = useState('');
 
@@ -13,8 +14,14 @@ function EquipmentInput() {
     // Handle adding equipment to the list
     const handleAddEquipment = () => {
         if (currentEquipment.trim()) {
-            setEquipment([...equipment, currentEquipment.trim()]);
+            const updatedEquipment = [...equipment, currentEquipment.trim()];
+            setEquipment(updatedEquipment);
             setCurrentEquipment(''); // Clear the input for the next equipment
+            
+            // Pass the updated equipment list to the parent component
+            if (onChange) {
+                onChange(updatedEquipment.join(', '));  // Send as a comma-separated string
+            }
         }
     };
 
@@ -40,6 +47,4 @@ function EquipmentInput() {
 }
 
 export default EquipmentInput;
-
-
 

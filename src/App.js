@@ -11,7 +11,7 @@ import InchSelection from './components/InchSelection';
 import apiKey from './components/apiKey';
 import AddEquipment from './components/AddEquipment';
 
-// CHATGPT imports
+// CHATGPT import
 import { OpenAI } from 'openai';
 
 
@@ -45,7 +45,7 @@ const [selectedEquipment, setEquipment] = useState('')
         model: 'gpt-4', //  <------- **SELECT MODEL TYPE FOR CHATGPT HERE**
         messages: [{ role: 'user', content: prompt }],
         max_tokens: 500, //adjust token amount
-        temperature: 0.5, //(0.1 - 0.5) --> low temperature == safe response, not as creative
+        temperature: 1, //(0.1 - 0.5) --> low temperature == safe response, not as creative
       });                 //(0.7 - 1.0+)--> high temperature == more creative and less predictable
 
       setResponse(result.choices[0].message.content); // Set the response
@@ -78,8 +78,8 @@ const [selectedEquipment, setEquipment] = useState('')
     `Give the best workout program for someone who is a ${selectedGender}, wants to focus their workout program towards ${selectedFocus}.
      They weigh about ${selectedWeight}, and their height is ${feet} feet, and ${inch} inches.
 
-      Make sure the program is geared towards, and specifically utilizes these
-    pieces of equipment and nothing else: ${selectedEquipment}
+    Make sure the program is geared towards, and specifically utilizes these
+    pieces of equipment and nothing else: ${selectedEquipment}, come up with creative ideas and titles for the workouts.
     
     
     
@@ -106,8 +106,12 @@ const [selectedEquipment, setEquipment] = useState('')
 
   return (
     <div className="App">
-      <div className="title-container">         {/*eslint-disable-next-line*/}
+
+      {/* Title */}
+      <div className="title-background">  
+        <div className = "title-container">    {/*eslint-disable-next-line*/}
         <LifterTitle /> <GPT_Title />
+        </div>
       </div>
 
       {/* buttons for assigning gender roles */}
@@ -116,7 +120,7 @@ const [selectedEquipment, setEquipment] = useState('')
           style={{ backgroundColor: selectedGender === 'male' ? 'blue' : 'grey' }}
         />
         <Button label="Female lifter" onClick={() => handleGenderSelection('female')}
-          style={{ backgroundColor: selectedGender === 'female' ? 'blue' : 'grey' }}
+          style={{ backgroundColor: selectedGender === 'female' ? 'pink' : 'grey' }}
         />
       </div>
 
@@ -165,6 +169,8 @@ const [selectedEquipment, setEquipment] = useState('')
       <div dangerouslySetInnerHTML={{__html: response}} />
 
       </div>
+
+
 
     </div>
   );
