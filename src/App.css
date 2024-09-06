@@ -1,81 +1,156 @@
+
+
 .App {
   text-align: center;
-  background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0');
+  background-image: url('https://img.freepik.com/free-photo/abstract-luxury-plain-blur-grey-black-gradient-used-as-background-studio-wall-display-your-products_1258-63621.jpg');
+  background-position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
+
+.parallax-container{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+
+
+}
 
 
 
 
 .title-background {
-  position: static; /* Ensure the overlay is positioned relative to the container */
-  padding: 500px;
+  /* position: static; 
+  bottom: 200;
   background-size:contain;
   background-repeat: no-repeat;
-  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230613/pngtree-black-and-white-gym-room-with-a-row-of-equipment-image_2911173.jpg'); 
+  background-image: url('./images/ai-generated-gym.jpg'); */
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  
+  width: 100%;
+  height: 100vh;
+  background-image: url('./images/ai-generated-gym.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  z-index: 0;
+
 
 }
 
+
+   
 
 
  .title-container {
+  /* position: relative;
+  bottom: 400px;
+  right: 500px;
+  z-index: 1; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   position: relative;
-  bottom: 200px;
-  right: 0px;
   z-index: 1;
+  top: 50px;
 
-  /*styling*/
-  /* background-color: rgb(38, 36, 36);
-  border: none;
-  border-radius: 200px;
-  border-style: ridge;
-  border-color: #0e6e11;
-  
-  box-shadow: #08f710 -20px -20px 20px -2px; */
 } 
 
-.lifter_title {
-  position: relative;
-  border-radius: 50px;
-  right: 50px;
-  font-size: 8em;
-  color: rgb(248, 247, 247);
-  filter: brightness(100%);
-  font-family: 'Nerko One', system-ui;
-  text-shadow:      -15px -15px 0 #000,  /* Top-left shadow */
-  15px -15px 0 #000,   /* Top-right shadow */
-  -15px 15px 0 #000,   /* Bottom-left shadow */
-  15px 15px 0 #000,    /* Bottom-right shadow */
-  -25px -5px 0 #000,   /* Extra shadow to create uneven paintbrush effect */
-  25px -5px 0 #000,    
-  -5px 25px 0 #000,    
-  5px 25px 0 #000,
-  0px 0px 40px #000;
 
-  outline-width: 50px;
+.navbar-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 10px; /*adjust for spacing between containers*/
+  gap : 50px;
+  
+}
 
+.navbar-container button {
+  background-color: rgba(255, 165, 0, 0.3);
+  color: white;
+
+  transition: transform 0.3s ease-in-out;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100px;
+  height: 50px;
+  
 
 }
 
-.gpt_title {
+.navbar-container button:hover {
+  background-color: rgba(255, 165, 0, 1);
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+.FlexFit_title {
   position: relative;
-  bottom: 150px;
-  left: 150px;
-  font-size: 5em;
-  color: rgb(8, 237, 8);
-  font-family: 'Nerko One', system-ui;
-  text-shadow:     -10px -10px 0 #000,  /* Top-left shadow */
-  10px -10px 0 #000,   /* Top-right shadow */
-  -10px 10px 0 #000,   /* Bottom-left shadow */
-  10px 10px 0 #000,    /* Bottom-right shadow */
-  -15px -3px 0 #000,   /* Extra shadow to create uneven paintbrush effect */
-  15px -3px 0 #000,    
-  -3px 15px 0 #000,    
-  3px 15px 0 #000,
-  0px 0px 30px #000; 
+  left: 515px;
+  
+
+  font-size: 2em;
+  color: rgb(255, 255, 255);
+  filter: brightness(100%);
+  font-family: 'Montserrat', system-ui;
+  /* text-shadow: #ff9706 1px 1px 1px; */
+  word-spacing: 20%;
+  outline-width: 50px;
+  letter-spacing: 5px;
+
+}
+
+
+
+.desc-container {
+ 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+
+  top: 100px;
+  left: 300px;
+
+} 
+.titledesc {
+  position: relative;
+  right: 500px;
+  width: 100px;
+  font-size: 3em;
+  color: rgb(255, 255, 255);
+  font-family: 'Montserrat', system-ui;
+  
+
+  
+} 
+
+.smalltitle-container{
+  position: relative;
+  font-size: large;
+  color: rgb(255, 255, 255);
+  font-family: 'Montserrat', system-ui;
+  font-size: 4em;
+  width: 800px;
+
+  margin-top: 00px;
+  
 
 
 } 
+
 
 
 
@@ -83,9 +158,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 1000px;
   margin-bottom: 50px; /*adjust for spacing between containers*/
-  gap : 150px;
+  gap : 50px;
 }
 
 .Gender-container .custom-button {

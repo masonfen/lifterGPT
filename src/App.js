@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import './App.css';
 
 // COMPONENTS 
 import Button from './components/Button';
-import Fit_Title from './components/Fit_Title';
-import FlexTitle from './components/FlexTitle';
+import TitleDesc from './components/TitleDesc';
+import FlexFit_Title from './components/FlexFit_Title';
+import SmallTitle from './components/SmallTitle';
 import WeightSelection from './components/WeightSelection';
 import FeetSelection from './components/FeetSelection';
 import InchSelection from './components/InchSelection';
 import apiKey from './components/apiKey';
 import AddEquipment from './components/AddEquipment';
-
 // CHATGPT import
 import { OpenAI } from 'openai';
+
+//animation import
+import 'animate.css';
 
 
 function App() {
@@ -31,6 +34,8 @@ const [feet, setFeet] = useState('');
 const [inch, setInch] = useState('');
 
 const [selectedEquipment, setEquipment] = useState('')
+
+
 
   // Initialize OpenAI client using API key
   const openai = new OpenAI({
@@ -84,7 +89,7 @@ const [selectedEquipment, setEquipment] = useState('')
     
     
     Please provide a 5-day workout plan in a structured format with the following details:
-    - Briefly describe what the workout is geared towards and how it is personalized.
+    - Briefly describe what the workout is geared towards and how it is personalized!!!!
     - Use <strong> tags for bold text.
     - Use <ul> and <li> tags to create bullet points.
     - Number the days (Day 1, Day 2, etc.) with <strong> tags.
@@ -108,18 +113,43 @@ const [selectedEquipment, setEquipment] = useState('')
     <div className="App">
 
       {/* Title */}
-      <div className="title-background">  
-        <div className = "title-container">    {/*eslint-disable-next-line*/}
-        <FlexTitle /> <Fit_Title />
+      <div class = "parallax-container">
+      <div className="title-background"> 
+        <div className = "navbar-container">
+        <Button label="Home" onClick={() => ('home')}
+       />
+
+       <Button label="About" onClick={() => ('about')}
+
+       />
+
+       <Button label="Other"  onClick={() => console.log('hi this is other')}
+
+       />
+       </div>
+        <div className = "desc-container"> 
+        <TitleDesc />
+  
         </div>
+        <div className = "title-container">    {/*eslint-disable-next-line*/}
+        <FlexFit_Title /> 
+        </div>
+      </div>
+      </div>
+      <div className = "smalltitle-container">
+      <SmallTitle />
       </div>
 
       {/* buttons for assigning gender roles */}
       <div className="Gender-container">
-        <Button label="Male lifter" onClick={() => handleGenderSelection('male')}
+        <Button label="Male" onClick={() => handleGenderSelection('male')}
           style={{ backgroundColor: selectedGender === 'male' ? 'blue' : 'grey' }}
         />
-        <Button label="Female lifter" onClick={() => handleGenderSelection('female')}
+        <Button label="Female" onClick={() => handleGenderSelection('female')}
+          style={{ backgroundColor: selectedGender === 'female' ? 'pink' : 'grey' }}
+        />
+
+        <Button label="Other" onClick={() => handleGenderSelection('female')}
           style={{ backgroundColor: selectedGender === 'female' ? 'pink' : 'grey' }}
         />
       </div>
