@@ -123,7 +123,7 @@ const [selectedEquipment, setEquipment] = useState('')
 
        />
 
-       <Button label="Other"  onClick={() => console.log('hi this is other')}
+       <Button label="Contact"  onClick={() => console.log('hi this is other')}
 
        />
        </div>
