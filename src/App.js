@@ -108,6 +108,7 @@ const [selectedEquipment, setEquipment] = useState('')
   }, [prompt]);
 
 
+  
 
   return (
     <div className="App">
@@ -138,9 +139,12 @@ const [selectedEquipment, setEquipment] = useState('')
         </div>
       </div>
       </div>
+
+      <section id = "aboutSection">
       <div className = "smalltitle-container">
       <SmallTitle />
       </div>
+      </section>
 
       {/* buttons for assigning gender roles */}
       <div className="Gender-container">
