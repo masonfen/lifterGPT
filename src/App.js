@@ -127,10 +127,12 @@ const [selectedEquipment, setEquipment] = useState('')
 
        />
        </div>
+       
         <div className = "desc-container"> 
         <TitleDesc />
-  
         </div>
+
+
         <div className = "title-container">    {/*eslint-disable-next-line*/}
         <FlexFit_Title /> 
         </div>
